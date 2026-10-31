@@ -1,0 +1,32 @@
+{
+  "name": "event-horizon-timer",
+  "version": "1.0.0",
+  "description": "Event Horizon study stopwatch, timer and alarm",
+  "main": "electron/main.js",
+  "author": "Event Horizon",
+  "scripts": {
+    "postinstall": "node scripts/fonts.js",
+    "start": "electron .",
+    "win": "electron-builder --win nsis --publish never",
+    "android:add": "cap add android && node scripts/android-prep.js && cap sync android",
+    "android:sync": "cap sync android",
+    "android:open": "cap open android"
+  },
+  "build": {
+    "appId": "com.eventhorizon.timer",
+    "productName": "Event Horizon",
+    "files": ["electron/**", "www/**", "build/icon.png"],
+    "win": { "target": ["nsis"], "icon": "build/icon.png" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true }
+  },
+  "devDependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/cli": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/local-notifications": "^6.1.0",
+    "@fontsource/space-grotesk": "^5.0.0",
+    "@fontsource/unbounded": "^5.0.0",
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  }
+}
